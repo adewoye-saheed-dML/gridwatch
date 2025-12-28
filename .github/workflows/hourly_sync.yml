@@ -1,9 +1,10 @@
- name: Hourly Carbon Sync
+name: Hourly Carbon Sync
 
 on:
   schedule:
+    # Runs at minute 0 past every hour
     - cron: '0 * * * *'
-
+  # Allows manual testing
   workflow_dispatch:
 
 jobs:
@@ -27,4 +28,4 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |
-          python3 ingest.py
+          python ingest.py
