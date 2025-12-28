@@ -1,9 +1,14 @@
 # GridWatch: Heavy Industry Load Optimization
 
-[![Live Application](https://img.shields.io/badge/Live-App-brightgreen)](https://gridwatch-app.streamlit.app/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
+![dbt](https://img.shields.io/badge/dbt-Core-FF694B?logo=dbt&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791?logo=postgresql&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 GridWatch is an end-to-end analytics engineering platform designed to optimize energy consumption for heavy industry operations. By ingesting and analyzing real-time carbon intensity data from the UK National Grid, the system identifies optimal production windows to minimize Scope 2 carbon emissions.
+
+<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/010c5928-c078-4375-89bc-5cbf003731a9" />
 
 ## Project Overview
 
@@ -28,16 +33,7 @@ GridWatch solves this by creating a real-time decision support system:
 ## Architecture
 
 The project implements a standard ELT (Extract, Load, Transform) pipeline:
-
-```graph LR
-
-    A[UK National Grid API] -->|Extract (Python)| B(Ingestion Script)
-    B -->|Load| C[(Supabase PostgreSQL)]
-    C -->|Transform (dbt)| D[Analytics Tables]
-    D -->|Serve| E[Streamlit Dashboard]
-    F[GitHub Actions] -->|Orchestrate| B
-    
-```
+<img width="2816" height="1536" alt="Image" src="https://github.com/user-attachments/assets/99e89657-144c-4533-bab9-243fbd2ffe75" />
 
 **Pipeline Components:**
 
@@ -195,4 +191,3 @@ Contributions are welcome! Please follow these steps:
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
----
