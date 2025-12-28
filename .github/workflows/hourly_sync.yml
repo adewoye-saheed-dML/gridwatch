@@ -1,0 +1,29 @@
+ name: Hourly Carbon Sync
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+
+
+jobs:
+  run-ingestion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests psycopg2-binary python-dotenv
+
+      - name: Run Ingestion Script
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          python3 ingest.py
