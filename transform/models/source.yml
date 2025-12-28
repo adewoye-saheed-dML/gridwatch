@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: gridwatch
+    database: postgres
+    schema: public
+    tables:
+      - name: raw_carbon_intensity
+        description: "Raw API data from UK National Grid."
+        columns:
+          - name: region_id
+            description: "Geographic region (e.g. UK_NATIONAL)"
+          - name: timestamp_utc
+            description: "Start time of the forecast window"
+          - name: forecast_intensity
+            description: "Predicted carbon grams per kWh"
+          - name: actual_intensity
+            description: "Actual value (NULL for future hours)"
+          - name: created_at
+            description: "Ingestion timestamp"
