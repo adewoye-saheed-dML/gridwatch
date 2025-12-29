@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
 # 1. Configuration
-st.set_page_config(page_title="GridWatch Operator", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="GridWatch Operator", layout="wide")
 load_dotenv()
 
 # 2. Database Connection
@@ -17,24 +17,23 @@ def get_db_engine():
 
 def fetch_forecast_data():
     engine = get_db_engine()
+   
     query = """
         SELECT * FROM analytics.fct_green_windows 
+        WHERE timestamp_utc >= NOW() - INTERVAL '30 minutes'
         ORDER BY timestamp_utc ASC
     """
     with engine.connect() as conn:
         df = pd.read_sql(query, conn)
         
-    # FORCE DATA TYPES (Crucial for preventing math errors)
     df['forecast_intensity'] = pd.to_numeric(df['forecast_intensity'])
     df['avg_24h_intensity'] = pd.to_numeric(df['avg_24h_intensity'])
     
     return df
 
 def calculate_kpis(df, load_kwh):
-    # Get the row for "Right Now"
     latest = df.iloc[0]
     
-    # Extract values and ensure they are floats
     current_intensity = float(latest['forecast_intensity'])
     avg_intensity = float(latest['avg_24h_intensity'])
     current_status = latest['window_status']
@@ -125,12 +124,11 @@ def main():
         fig.add_hline(y=kpis['avg_intensity'], line_dash="dash", line_color="black", annotation_text="Daily Avg")
         fig.update_layout(showlegend=False)
 
-        # UPDATED: Removed 'use_container_width' to fix the warning
         st.plotly_chart(fig)
 
         # --- Export ---
         with st.expander("Detailed Schedule"):
-            # UPDATED: Removed 'use_container_width' to fix the warning
+           
             st.dataframe(df)
             st.download_button(
                 "Download CSV",
