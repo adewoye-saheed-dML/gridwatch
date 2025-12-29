@@ -10,6 +10,8 @@ GridWatch is an end-to-end analytics engineering platform designed to optimize e
 
 <img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/010c5928-c078-4375-89bc-5cbf003731a9" />
 
+**Live dashboard:** https://gridwatch-app.streamlit.app/
+
 ## Project Overview
 
 Industrial operations such as smelting, manufacturing, and large-scale computing consume significant amounts of electricity. GridWatch provides a data-driven approach to scheduling these loads by tracking grid carbon intensity. The system establishes a dynamic baseline using a 24-hour moving average and categorizes upcoming time slots as favorable or unfavorable for energy-intensive tasks.
