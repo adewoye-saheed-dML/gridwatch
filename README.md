@@ -8,7 +8,7 @@
 
 GridWatch is an end-to-end analytics engineering platform designed to optimize energy consumption for heavy industry operations. By ingesting and analyzing real-time carbon intensity data from the UK National Grid, the system identifies optimal production windows to minimize Scope 2 carbon emissions.
 
-<img width="1600" height="900" alt="Image" src="https://github.com/user-attachments/assets/010c5928-c078-4375-89bc-5cbf003731a9" />
+[![Demo Video](asset/vd.png)](https://www.loom.com/share/5a1b7c4cce924e0db6d8caf132176769)
 
 **Live dashboard:** https://gridwatch-app.streamlit.app/
 
